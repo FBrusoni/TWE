@@ -18,7 +18,11 @@
         </span>
         <p>Billy Abbot talks to Allan Logan about Bruichladdich and their future plans</p>
     </header>
-
+    <div id="videoModal" class="hide">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/RWxhZhWPkdY" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div id="closeButton">X CLOSE </div>
+    </div>
 <div class="videoThumbnail" id="videoThumbnail">
     <img class="videoThumbnail__img" srcset="./assets/video_thumbnail-desktop.jpg 1024w,
                 ./assets/video_thumbnail-tablet.jpg 640w,
@@ -168,6 +172,22 @@
     </li>
 </ul>
 </section>
+<script>
+    var modal = document.getElementById('videoModal');
+    var trigger = document.getElementById('videoThumbnail');
+    var closeButton = document.getElementById('closeButton');
+    
+   //open video player 
+    trigger.addEventListener("click", function() {
+        modal.classList.toggle("show");
+        document.body.classList.toggle("modalOpen");
+    });
+    //close video player
+    closeButton.addEventListener("click", function() {
+        modal.classList.toggle("show");
+        document.body.classList.toggle("modalOpen");
+    });
 
+</script>
 </body>
 </html>

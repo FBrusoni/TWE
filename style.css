@@ -1,4 +1,38 @@
 /* Variables */
+#videoModal {
+  position: fixed;
+  top: 25%;
+  z-index: 20;
+  margin: 0 auto;
+  right: 0;
+  left: 0;
+}
+#videoModal.hide {
+  display: none;
+}
+#videoModal.show {
+  display: block;
+}
+@media screen and (max-width: 1058px) {
+  #videoModal iframe {
+    max-width: 90%;
+  }
+}
+#videoModal #closeButton {
+  padding: 0.5em 1em;
+  display: inline-block;
+  background: #aa9756;
+  color: #fff;
+  border-radius: 3px;
+  position: absolute;
+  top: -3em;
+}
+@media screen and (max-width: 1058px) {
+  #videoModal #closeButton {
+    right: 1em;
+  }
+}
+
 .divider {
   margin: 1em auto;
   width: 100%;
@@ -29,8 +63,22 @@ body img {
 body p {
   line-height: 1.618;
 }
+body.modalOpen::after {
+  content: "";
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: -2em;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: "Lato", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -76,6 +124,7 @@ section.tastingCard {
   margin: 3em 0;
   border-left: none;
   border-right: none;
+  display: -ms-flexbox;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -155,6 +204,7 @@ section.moreCard {
 section.moreCard ul.card__list {
   margin-top: 2em;
   padding: 0;
+  display: -ms-flexbox;
   display: flex;
   flex-flow: row nowrap;
   column-gap: 1em;
@@ -174,14 +224,14 @@ section.moreCard ul.card__list li.card__item {
   margin: 0;
   cursor: pointer;
 }
-@media screen and (max-width: 1058px) {
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   section.moreCard ul.card__list li.card__item {
-    width: 40%;
+    margin: 0 0.5em;
   }
 }
-@media screen and (max-width: 575.98px) {
+@media screen and (max-width: 1058px) {
   section.moreCard ul.card__list li.card__item {
-    padding: 0.5 0 1em;
+    width: 45%;
   }
 }
 section.moreCard ul.card__list li.card__item .item__img {

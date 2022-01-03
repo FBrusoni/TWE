@@ -1,56 +1,103 @@
-
 /* Variables */
+
 $background:#e7e7e7;
 $body-color: #1a1917;
 $alt-color: #808080;
 $accent-color:#aa9756;
 $brand-color:#562345;
-$body-font:'Noto Serif', serif;
+$body-font:'Noto Serif',
+serif;
+$xs: 340.98px;
 $small: 575.98px;
 $small-l:767.98;
 $medium: 1058px;
-
 @mixin heading-font {
     font-family: 'Lato', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
-    margin-top:0
+    margin-top: 0
 }
 
 @mixin font-size($n) {
     font-size: $n * 1.618em;
-  }
+} 
+
+#videoModal {
+    position:fixed;
+    top:25%;
+    z-index: 20;
+    margin:0 auto;
+    right:0;
+    left:0;
+    &.hide {
+        display: none;
+    }
+    &.show {
+        display: block;
+    }
+    iframe {
+        @media screen and (max-width: $medium) {
+            max-width: 90%;
+        }
+    }
+    #closeButton {
+        padding: 0.5em 1em;
+        display: inline-block;
+        background: $accent-color;
+        color: #fff;
+        border-radius: 3px;
+        position: absolute;
+        top: -3em;
+        @media screen and (max-width: $medium) {
+            right:1em
+        }
+    }
+}
 
 .divider {
-  margin:1em auto;
-  width:100%;
-  max-width: 500px;
-  display: block;
+    margin: 1em auto;
+    width: 100%;
+    max-width: 500px;
+    display: block;
     img {
         width: 100%;
     }
 }
 
 body {
-    background:$background;
-   color:$body-color;
-   font-family: $body-font;
-   text-align: center;
-   font-size:16px;
-   margin:2em 0 0;
-   @media screen and (max-width: $medium) {
-    font-size:15px;
-    padding:0 1em
-  }
-   img {
-       outline: none
-   }
-   p {
-    line-height: 1.618
-   }
+    background: $background;
+    color: $body-color;
+    font-family: $body-font;
+    text-align: center;
+    font-size: 16px;
+    margin: 2em 0 0;
+    @media screen and (max-width: $medium) {
+        font-size: 15px;
+        padding: 0 1em
+    }
+    img {
+        outline: none
+    }
+    p {
+        line-height: 1.618
+    }
+    &.modalOpen::after {
+        content:"";
+        background:rgba($color: #000000, $alpha: 0.8);
+        position:fixed;
+        top:-2em;
+        right:0;
+        left:0;
+        bottom:0;
+        z-index: 10;
+        backdrop-filter: blur(4px);
+    }
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     @include heading-font;
 }
 
@@ -59,76 +106,78 @@ header {
         @include font-size(1);
     }
     p {
-        color:$alt-color
+        color: $alt-color
     }
 }
 
 .videoThumbnail {
-    width:100% ;
+    width: 100%;
     max-width: 700px;
-    margin:0 auto;
+    margin: 0 auto;
     height: auto;
     position: relative;
     box-sizing: border-box;
     img.videoThumbnail__img {
-        width:100%;
-        cursor:pointer;
+        width: 100%;
+        cursor: pointer;
     }
-    &::after{
-        content:url("./assets/btn_play.png");
-        position:absolute;
-        height: 40px;;
-        top:calc(50% - 40px);
-        right:calc(50% - 35px);
+    &::after {
+        content: url("./assets/btn_play.png");
+        position: absolute;
+        height: 40px;
+        ;
+        top: calc(50% - 40px);
+        right: calc(50% - 35px);
         overflow: hidden;
         border-radius: 5px;
-        transition:all 0.1s ease-out;
+        transition: all 0.1s ease-out;
     }
     &:hover::after {
-        transform:scale(1.1);
-        transition:all 0.1s ease-in;
+        transform: scale(1.1);
+        transition: all 0.1s ease-in;
     }
 }
 
 section.tastingCard {
-    border:10px solid $accent-color;
-    margin:3em 0;
-    border-left:none;
-    border-right:none;
+    border: 10px solid $accent-color;
+    margin: 3em 0;
+    border-left: none;
+    border-right: none;
+    display: -ms-flexbox;
     display: flex;
     flex-direction: row;
     align-items: stretch;
     @media screen and (max-width: $medium) {
         flex-wrap: wrap;
-      }
-    .divider {
-        margin:2em auto;
     }
-     .card__body{
-        padding:1em 2em;
-        background:#fff;
+    .divider {
+        margin: 2em auto;
+    }
+    .card__body {
+        padding: 1em 2em;
+        background: #fff;
         width: 50%;
         box-sizing: border-box;
         @media screen and (max-width: $medium) {
-            width:100%;
-            order:3;
-          }
+            width: 100%;
+            order: 3;
+        }
         .card__header {
             @include font-size(0.8);
             @media screen and (max-width: $medium) {
-                order:2;
-              }
-        .card__subtitle {
-            @include font-size(0.5);
-            @include heading-font;
-            text-transform: uppercase;
-            font-weight: bold;
-            opacity: 0.8;
+                order: 2;
+            }
+            .card__subtitle {
+                @include font-size(0.5);
+                @include heading-font;
+                text-transform: uppercase;
+                font-weight: bold;
+                opacity: 0.8;
+            }
         }
-    }
         ul.card__list {
-            margin:0;
-            padding:0;
+            margin: 0;
+            padding: 0;
             li.list__item {
                 list-style-type: none;
                 .list__title {
@@ -136,76 +185,78 @@ section.tastingCard {
                     margin-bottom: 0.5em;
                 }
                 .list__body {
-                    margin:0 0 2em;
+                    margin: 0 0 2em;
                 }
             }
         }
-     }
-     .card__img {
-         width: 50%;
-         margin:-1px 0;
-         @media screen and (max-width: $medium) {
-            width:100%;
-            order:1
-          }
-     }
+    }
+    .card__img {
+        width: 50%;
+        margin: -1px 0;
+        @media screen and (max-width: $medium) {
+            width: 100%;
+            order: 1
+        }
+    }
 }
+
 section.moreCard {
-    width:80vw;
-    margin:0 auto;
+    width: 80vw;
+    margin: 0 auto;
     @media screen and (max-width: $medium) {
-        width:auto;
-      }
+        width: auto;
+    }
     ul.card__list {
-        margin-top:2em;
+        margin-top: 2em;
         padding: 0;
-    display: flex;
-    flex-flow:row nowrap;
-    column-gap:1em;
-    @media screen and (max-width: $medium) {
-        overflow-x:scroll
-      }
+        display: -ms-flexbox;
+        display: flex;
+        flex-flow: row nowrap;
+        column-gap: 1em;
+        @media screen and (max-width: $medium) {
+            overflow-x: scroll
+        }
         li.card__item {
             font-family: 'Lato', sans-serif;
-            list-style-type:none;
-            background:#fff;
+            list-style-type: none;
+            background: #fff;
             padding: 0.5em 0.5em 1em;
             box-sizing: border-box;
-            width:25%;
-            margin:0;
-            cursor:pointer;
+            width: 25%;
+            margin: 0;
+            cursor: pointer;
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                margin: 0 0.5em
+            }
             @media screen and (max-width: $medium) {
-                width:40%;
-              }
-              @media screen and (max-width: $small) {
-                padding:0.5 0 1em
-              }
+                width: 45%;
+            }
             .item__img {
                 height: 200px;
                 width: auto;
                 @media screen and (max-width: $medium) {
-                    height:150px
-                  }
-                  @media screen and (max-width: $small) {
-                    height:130px
-                  }
+                    height: 150px
+                }
+                @media screen and (max-width: $small) {
+                    height: 130px
+                }
             }
             .item__header {
                 min-height: 80px;
                 margin-bottom: 2em;
                 @media screen and (max-width: $small) {
-                    min-height:100px
-                  }
+                    min-height: 100px
+                }
                 @include font-size(0.5);
                 h4.item__title {
                     text-transform: capitalize;
-                    margin:0 0 0.5em;
-                    color:$brand-color;
+                    margin: 0 0 0.5em;
+                    color: $brand-color;
                 }
                 .item__extra {
                     display: block;
                     font-weight: bold;
-                    margin:0 0 0.5em;
+                    margin: 0 0 0.5em;
                 }
                 .item__subtitle {
                     opacity: 0.6;
@@ -214,14 +265,13 @@ section.moreCard {
             .item__footer {
                 @include font-size(0.5);
                 .item__price {
-                    color:$brand-color;
+                    color: $brand-color;
                     display: block;
                     @include font-size(0.8);
-                 }
-                 .item__info {
-                     opacity: 0.6;
-                    
-                 }
+                }
+                .item__info {
+                    opacity: 0.6;
+                }
             }
         }
     }
